@@ -15,9 +15,13 @@
     <ClInclude Include="src\Hazel\Application.h" />
     <ClInclude Include="src\Hazel.h" />
     <ClInclude Include="src\Hazel\EntryPoint.h" />
+    <ClInclude Include="src\Hazel\Log.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Hazel\Application.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hazel\Log.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

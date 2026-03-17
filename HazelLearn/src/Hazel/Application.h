@@ -2,7 +2,7 @@
 
 #include "Core.h"
 
-namespace HL
+namespace Hazel
 {
 	class HAZEL_API Application
 	{
