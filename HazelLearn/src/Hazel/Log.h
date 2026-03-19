@@ -11,7 +11,9 @@ namespace Hazel
 	{
 	public:
 		static void Init();
-
+		/**
+		* 这段代码定义了一个静态内联成员函数，它返回一个对静态 shared_ptr<spdlog::logger> 变量的引用，用于在全局范围内方便地访问核心日志记录器。这是 C++ 中实现单例式日志访问的常见模式，结合了内联函数的高效性和静态成员的全局唯一性。
+		*/
 		inline static std::shared_ptr<spdlog::logger>& GetCoreLogger() { return s_CoreLogger; }
 		inline static std::shared_ptr<spdlog::logger>& GetClientLogger() { return s_ClientLogger; }
 
