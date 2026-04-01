@@ -17,7 +17,11 @@ project "HazelLearn"
 	location "HazelLearn"
 	kind "SharedLib"
 	language "C++"
-
+	
+	filter "action:vs*"
+        buildoptions { "/utf-8" }
+    filter {}
+	
 	targetdir("bin/" .. outputdir .. "/%{prj.name}")--vs中输出目录 bin/Debug-windos-x64/HazelLearn
 	objdir("bin-int/" .. outputdir .. "/%{prj.name}")
 	files
@@ -28,13 +32,14 @@ project "HazelLearn"
 
 	includedirs--include路径配置
 	{
+		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include"
 	}
 
 	filter "system:windows"
 		cppdialect "C++17"
 		staticruntime "On"
-		systemversion "10.0.26100.0"
+		systemversion "latest"
 
 		defines--预配置宏
 		{
@@ -66,7 +71,13 @@ project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
-
+	
+	
+    filter "action:vs*"
+        buildoptions { "/utf-8" }
+    filter {}
+	
+	
 	targetdir("bin/" .. outputdir .. "/%{prj.name}")
 	objdir("bin-int/" .. outputdir .. "/%{prj.name}")
 	files
@@ -89,7 +100,7 @@ project "Sandbox"
 	filter "system:windows"
 		cppdialect "C++17"
 		staticruntime "On"
-		systemversion "10.0.26100.0"
+		systemversion "latest"
 
 
 		defines
