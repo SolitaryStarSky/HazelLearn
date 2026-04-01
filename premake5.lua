@@ -24,6 +24,11 @@ project "HazelLearn"
 	
 	targetdir("bin/" .. outputdir .. "/%{prj.name}")--vs中输出目录 bin/Debug-windos-x64/HazelLearn
 	objdir("bin-int/" .. outputdir .. "/%{prj.name}")
+	
+	pchheader "hzpch.h"
+	pchsource "HazelLearn/src/hzpch.cpp"
+	
+	
 	files
 	{
 		"%{prj.name}/src/**.h",

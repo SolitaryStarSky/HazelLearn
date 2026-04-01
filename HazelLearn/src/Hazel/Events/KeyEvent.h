@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace Hazel
 {
 	//键盘事件的基类,所有键盘事件继承自此
