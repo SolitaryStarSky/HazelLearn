@@ -13,6 +13,12 @@ workspace "HazelLearn"
 	}
 	outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"--输出路径 Debug-windos-x86_64
 
+-- Include directories relative to root folder (solution directory) 用表和相对路径管理第三方库
+IncludeDir = {}
+IncludeDir["GLFW"] = "HazelLearn/vendor/GLFW/include"	
+	
+include "HazelLearn/vendor/GLFW"
+	
 project "HazelLearn"
 	location "HazelLearn"
 	kind "SharedLib"
@@ -38,7 +44,14 @@ project "HazelLearn"
 	includedirs--include路径配置
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+	
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
@@ -60,11 +73,14 @@ project "HazelLearn"
 		
 
 	filter "configurations:Debug"
+		runtime "Debug"
+		staticruntime "off"
 		defines "HZ_DEBUG"
 		symbols "On"
 		
 	filter "configurations:Release"
 		defines "HZ_RELEASE"
+		runtime "Release"
 		symbols "On"
 		
 	filter "configurations:Dist"
